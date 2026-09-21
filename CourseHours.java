@@ -12,7 +12,8 @@ public class CourseHours {
 
     public static void main(String[] args) {
 
-        //14 records 
+        //This is the full course participation record
+        //Each record contains first name, last name, course they are in and the course hours
         String[] records = {
             "Professor Isaac Newton Physics 6",
             "TA Marie Curie Physics 6",
@@ -35,7 +36,7 @@ public class CourseHours {
 
         // Create the objects from the records
         for (int i = 0; i < records.length; i++) {
-
+            //This splits the records into single fields
             String[] data = records[i].split(" ");
 
             String title = data[0];
@@ -43,7 +44,7 @@ public class CourseHours {
             String lastName = data[2];
             String courseName = data[3];
             int courseHours = Integer.parseInt(data[4]);
-
+            //This creates the subclasses based on the role
             if (title.equals("Professor")) {
                 people[i] = new Professor(firstName, lastName, courseName, courseHours);
             }
@@ -58,20 +59,20 @@ public class CourseHours {
         //arrays to store each person one time and their total hours
         Person[] uniquePeople = new Person[records.length];
         int[] totalHours = new int[records.length];
-
+        //It is at zero as it is the number of unique people so far
         int count = 0;
 
         //checks for duplicate people
         for (int i = 0; i < people.length; i++) {
-
+            
             boolean found = false;
-
+            //This compares the current people with any of the previouly stored unique people
             for (int j = 0; j < count; j++) {
-
+                //This finds if a duplicate is found in the first name, last name, and role match.
                 if (uniquePeople[j].getFirstName().equals(people[i].getFirstName())
                         && uniquePeople[j].getLastName().equals(people[i].getLastName())
                         && uniquePeople[j].getTitle().equals(people[i].getTitle())) {
-
+                    //This adds the course hours to any existing ones
                     totalHours[j] = totalHours[j]
                             + people[i].getParticipatingHours(people[i].getCourseHours());
 
