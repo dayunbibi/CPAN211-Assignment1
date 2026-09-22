@@ -9,10 +9,8 @@ public class Student extends Person {
 	//Override method for calculating totalHours
 	@Override
 	public int getParticipatingHours(int courseHours) {
-		/*Utilizing labHours from TA to calculate total_hours*/
-		int labHours = (courseHours > 4) ? 2 : 1;
-		int totalHours = courseHours + labHours;
-		return totalHours;
+		//Since this is student they get full hour of courses
+		return courseHours;
 	}
 
 	/*getTitle returns the title of Student*/
